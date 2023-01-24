@@ -1,5 +1,3 @@
-# App-Rating-Prediction-using-Python
-
 DESCRIPTION
 
 Objective: Make a model to predict the app rating, with other information about the app provided.
@@ -46,31 +44,31 @@ Android Ver: Minimum required Android version
 
 Steps to perform:
 
-Load the data file using pandas. 
+1.Load the data file using pandas. 
 
-Check for null values in the data. Get the number of null values for each column.
+2.Check for null values in the data. Get the number of null values for each column.
 
-Drop records with nulls in any of the columns. 
+3.Drop records with nulls in any of the columns. 
 
-Variables seem to have incorrect type and inconsistent formatting. You need to fix them: 
+4.Variables seem to have incorrect type and inconsistent formatting. You need to fix them: 
 
-Size column has sizes in Kb as well as Mb. To analyze, you’ll need to convert these to numeric.
+4.1 Size column has sizes in Kb as well as Mb. To analyze, you’ll need to convert these to numeric.
 
-Extract the numeric value from the column
+4.2 Extract the numeric value from the column
 
-Multiply the value by 1,000, if size is mentioned in Mb
+4.3 Multiply the value by 1,000, if size is mentioned in Mb
 
-Reviews is a numeric field that is loaded as a string field. Convert it to numeric (int/float).
+4.4 Reviews is a numeric field that is loaded as a string field. Convert it to numeric (int/float).
 
-Installs field is currently stored as string and has values like 1,000,000+. 
+4.5 Installs field is currently stored as string and has values like 1,000,000+. 
 
-Treat 1,000,000+ as 1,000,000
+4.6 Treat 1,000,000+ as 1,000,000
 
-remove ‘+’, ‘,’ from the field, convert it to integer
+4.7 remove ‘+’, ‘,’ from the field, convert it to integer
 
-Price field is a string and has $ symbol. Remove ‘$’ sign, and convert it to numeric.
+4.8 Price field is a string and has $ symbol. Remove ‘$’ sign, and convert it to numeric.
 
-5. Sanity checks:
+5.Sanity checks:
 
 Average rating should be between 1 and 5 as only these values are allowed on the play store. Drop the rows that have a value outside this range.
 
@@ -78,7 +76,7 @@ Reviews should not be more than installs as only those who installed can review 
 
 For free apps (type = “Free”), the price should not be >0. Drop any such rows.
 
-5. Performing univariate analysis: 
+6. Performing univariate analysis: 
 
 Boxplot for Price
 
@@ -98,7 +96,7 @@ Note down your observations for the plots made above. Which of these seem to hav
 
  
 
-6. Outlier treatment: 
+7. Outlier treatment: 
 
 Price: From the box plot, it seems like there are some apps with very high price. A price of $200 for an application on the Play Store is very high and suspicious!
 
@@ -116,7 +114,7 @@ Find out the different percentiles – 10, 25, 50, 70, 90, 95, 99
 
 Decide a threshold as cutoff for outlier and drop records having values more than that
 
-7. Bivariate analysis: Let’s look at how the available predictors relate to the variable of interest, i.e., our target variable rating. Make scatter plots (for numeric features) and box plots (for character features) to assess the relations between rating and the other features.
+8. Bivariate analysis: Let’s look at how the available predictors relate to the variable of interest, i.e., our target variable rating. Make scatter plots (for numeric features) and box plots (for character features) to assess the relations between rating and the other features.
 
 Make scatter plot/joinplot for Rating vs. Price
 
@@ -140,7 +138,7 @@ Which genre has the best ratings?
 
 For each of the plots above, note down your observation.
 
-8. Data preprocessing
+9. Data preprocessing
 
 For the steps below, create a copy of the dataframe to make all the edits. Name it inp1.
 
@@ -150,14 +148,14 @@ Drop columns App, Last Updated, Current Ver, and Android Ver. These variables ar
 
 Get dummy columns for Category, Genres, and Content Rating. This needs to be done as the models do not understand categorical data, and all data should be numeric. Dummy encoding is one way to convert character fields to numeric. Name of dataframe should be inp2.
 
-9. Train test split  and apply 70-30 split. Name the new dataframes df_train and df_test.
+10. Train test split  and apply 70-30 split. Name the new dataframes df_train and df_test.
 
-10. Separate the dataframes into X_train, y_train, X_test, and y_test.
+11. Separate the dataframes into X_train, y_train, X_test, and y_test.
 
-11 . Model building
+12 . Model building
 
 Use linear regression as the technique
 
 Report the R2 on the train set
 
-12. Make predictions on test set and report R2.
+13. Make predictions on test set and report R2.
